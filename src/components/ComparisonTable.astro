@@ -1,0 +1,71 @@
+---
+const datasets = [
+  {
+    name: 'VitalVideos-EU',
+    subjects: 100,
+    duration: '5 min',
+    lighting: 3,
+    measurements: 'HR'
+  },
+  {
+    name: 'VitalVideos-Africa',
+    subjects: 150,
+    duration: '10 min',
+    lighting: 5,
+    measurements: 'HR, HRV'
+  },
+  {
+    name: 'VitalVideos-worldwide',
+    subjects: 200,
+    duration: '15 min',
+    lighting: 7,
+    measurements: 'HR, HRV, RR'
+  },
+  {
+    name: 'VitalVideos-SpO2',
+    subjects: 175,
+    duration: '12 min',
+    lighting: 6,
+    measurements: 'HR, SpO2'
+  }
+];
+---
+
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-white">
+    <thead>
+      <tr class="bg-gray-50">
+        <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Feature</th>
+        {datasets.map(dataset => (
+          <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">{dataset.name}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200">
+      <tr>
+        <td class="px-6 py-4 text-sm text-gray-900">Number of Subjects</td>
+        {datasets.map(dataset => (
+          <td class="px-6 py-4 text-sm text-gray-600">{dataset.subjects}</td>
+        ))}
+      </tr>
+      <tr>
+        <td class="px-6 py-4 text-sm text-gray-900">Video Duration</td>
+        {datasets.map(dataset => (
+          <td class="px-6 py-4 text-sm text-gray-600">{dataset.duration}</td>
+        ))}
+      </tr>
+      <tr>
+        <td class="px-6 py-4 text-sm text-gray-900">Lighting Conditions</td>
+        {datasets.map(dataset => (
+          <td class="px-6 py-4 text-sm text-gray-600">{dataset.lighting}</td>
+        ))}
+      </tr>
+      <tr>
+        <td class="px-6 py-4 text-sm text-gray-900">Ground Truth Measurements</td>
+        {datasets.map(dataset => (
+          <td class="px-6 py-4 text-sm text-gray-600">{dataset.measurements}</td>
+        ))}
+      </tr>
+    </tbody>
+  </table>
+</div>

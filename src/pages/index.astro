@@ -1,0 +1,170 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DatasetCard from '../components/DatasetCard.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const datasets = [
+  {
+    name: 'VitalVideos-EU',
+    tagline: 'High-quality European dataset with controlled conditions',
+    features: [
+      'Diverse European population',
+      'High-quality recordings',
+      'Controlled environment'
+    ]
+  },
+  {
+    name: 'VitalVideos-Africa',
+    tagline: 'First comprehensive African dataset for rPPG research',
+    features: [
+      'First large African rPPG dataset',
+      'Multiple ethnic groups',
+      'Various lighting conditions'
+    ]
+  },
+  {
+    name: 'VitalVideos-worldwide',
+    tagline: 'Global dataset covering diverse populations and environments',
+    features: [
+      'Global demographic representation',
+      'Multiple recording settings',
+      'Comprehensive vital signs'
+    ]
+  },
+  {
+    name: 'VitalVideos-SpO2',
+    tagline: 'Specialized dataset for oxygen saturation measurement',
+    features: [
+      'Oxygen saturation ground truth',
+      'Clinical validation',
+      'Multiple scenarios'
+    ]
+  }
+];
+
+const faqs = [
+  {
+    question: 'How can I access the datasets?',
+    answer: 'Fill out our request form or contact us directly. We provide free academic licenses and commercial licenses for companies.'
+  },
+  {
+    question: 'What vital signs can be measured with these datasets?',
+    answer: 'Depending on the dataset, you can measure heart rate (HR), heart rate variability (HRV), respiratory rate (RR), and blood oxygen saturation (SpO2).'
+  },
+  {
+    question: 'Are the datasets suitable for commercial use?',
+    answer: 'Yes, we offer commercial licenses and have already helped 9 companies develop their rPPG technology.'
+  },
+  {
+    question: 'What makes these datasets unique?',
+    answer: 'Our datasets feature larger sample sizes, diverse demographics, and higher quality recordings than existing datasets, along with comprehensive ground truth measurements.'
+  }
+];
+---
+
+<Layout title="VitalVideos">
+  <header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+    <nav class="container mx-auto px-4 py-4">
+      <ul class="flex justify-center space-x-8">
+        <li><a href="#about" class="text-gray-700 hover:text-primary">About</a></li>
+        <li><a href="#datasets" class="text-gray-700 hover:text-primary">Datasets</a></li>
+        <li><a href="#comparison" class="text-gray-700 hover:text-primary">Comparison</a></li>
+        <li><a href="#faq" class="text-gray-700 hover:text-primary">FAQ</a></li>
+        <li><a href="#contact" class="text-gray-700 hover:text-primary">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-50 to-white px-4 pt-16">
+      <div class="text-center">
+        <h1 class="text-5xl font-bold text-gray-900 mb-6">VitalVideos</h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          The most comprehensive datasets for remote vital sign measurement, used by top researchers and companies worldwide.
+        </p>
+        <div class="flex justify-center gap-4">
+          <a href="#datasets" class="btn-primary">
+            Explore Datasets
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-8">About rPPG Research</h2>
+        <div class="max-w-3xl mx-auto">
+          <p class="text-gray-600 mb-6">
+            Remote photoplethysmography (rPPG) is a groundbreaking technology that enables contactless measurement of vital signs through video analysis of facial blood flow patterns. Our datasets are advancing this field by providing comprehensive, high-quality data that addresses current limitations in existing datasets.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            <div class="bg-blue-50 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold mb-4">Industry Adoption</h3>
+              <p class="text-gray-600 mb-4">Trusted by 9 companies building commercial rPPG solutions, speeding up product development & certification roadmaps.</p>
+            </div>
+            <div class="bg-blue-50 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold mb-4">Academic Impact</h3>
+              <p class="text-gray-600 mb-4">Supporting 50+ academic licenses and numerous published papers, driving innovation in rPPG research.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Datasets Section -->
+    <section id="datasets" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Our Datasets</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {datasets.map(dataset => <DatasetCard name={dataset.name} tagline={dataset.tagline} features={dataset.features} />)}
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section id="comparison" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Dataset Comparison</h2>
+        <ComparisonTable />
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+        <div class="max-w-3xl mx-auto space-y-6">
+          {faqs.map(faq => (
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">{faq.question}</h3>
+              <p class="text-gray-600">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Request Access</h2>
+        <p class="text-center mb-8">
+          Fill out the form below or email directly at <a href="mailto:contact@vitalvideos.com" class="text-primary hover:text-secondary">contact@vitalvideos.com</a>
+        </p>
+        <ContactForm />
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .btn-primary {
+    @apply bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-colors;
+  }
+  .btn-secondary {
+    @apply bg-white text-primary border-2 border-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors;
+  }
+</style>

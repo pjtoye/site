@@ -1,0 +1,22 @@
+---
+interface Props {
+  name: string;
+  tagline: string;
+  features: string[];
+}
+
+const { name, tagline, features } = Astro.props;
+---
+
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+  <h3 class="text-xl font-semibold text-gray-900 mb-2">{name}</h3>
+  <p class="text-gray-600 mb-4">{tagline}</p>
+  <ul class="space-y-2">
+    {features.map(feature => (
+      <li class="text-gray-600 flex items-center">
+        <span class="text-primary mr-2">•</span>
+        {feature}
+      </li>
+    ))}
+  </ul>
+</div>
